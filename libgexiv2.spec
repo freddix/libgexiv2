@@ -1,7 +1,7 @@
 Summary:	GObject-based wrapper around the Exiv2 library
 Name:		libgexiv2
 Version:	0.6.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Libraries
 Source0:	http://yorba.org/download/gexiv2/0.6/%{name}_%{version}.tar.xz
@@ -12,6 +12,7 @@ BuildRequires:	glib-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkg-config
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,6 +23,8 @@ It makes the basic features of Exiv2 available to GNOME applications.
 Summary:	Header files for gexiv2 library
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
+Requires:	zlib-devel
 
 %description devel
 This is the package containing the header files for gexiv2 library.
@@ -66,7 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgexiv2.so
-%{_libdir}/libgexiv2.la
 %{_includedir}/gexiv2
 %{_pkgconfigdir}/gexiv2.pc
 %{_datadir}/vala/vapi/gexiv2.vapi
