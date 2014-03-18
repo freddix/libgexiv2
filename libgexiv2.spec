@@ -1,12 +1,11 @@
 Summary:	GObject-based wrapper around the Exiv2 library
 Name:		libgexiv2
-Version:	0.7.0
+Version:	0.10.0
 Release:	1
 License:	GPL v2
 Group:		Libraries
-Source0:	http://yorba.org/download/gexiv2/0.7/%{name}-%{version}.tar.xz
-# Source0-md5:	15f5adab32022c6ab3f66d82eed7c1e8
-Patch0:		%{name}-link.patch
+Source0:	https://download.gnome.org/sources/gexiv2/0.10/gexiv2-%{version}.tar.xz
+# Source0-md5:	d5e33e2e6d034df900879a167513325f
 BuildRequires:	exiv2-devel
 BuildRequires:	glib-devel
 BuildRequires:	libstdc++-devel
@@ -30,29 +29,22 @@ Requires:	zlib-devel
 This is the package containing the header files for gexiv2 library.
 
 %prep
-%setup -q
-%patch0 -p1
-
-# use rpmcflags
-sed -i -e 's|-O2 -g|%{rpmcflags}|g' Makefile
+%setup -qn gexiv2-%{version}
 
 %build
 %{__libtoolize}
-./configure \
-	--prefix=%{_prefix}	\
-	--release
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure
 
-%{__make} \
-	CXX="%{__cxx}"	\
-	LIB=%{_lib}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	PREFIX="%{_prefix}"	\
-	DESTDIR=$RPM_BUILD_ROOT	\
-	LIB=%{_lib}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
