@@ -1,11 +1,11 @@
 Summary:	GObject-based wrapper around the Exiv2 library
 Name:		libgexiv2
-Version:	0.10.0
+Version:	0.10.1
 Release:	1
 License:	GPL v2
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gexiv2/0.10/gexiv2-%{version}.tar.xz
-# Source0-md5:	d5e33e2e6d034df900879a167513325f
+# Source0-md5:	3d9d966a477b1eab752756cfd72b5da0
 BuildRequires:	exiv2-devel
 BuildRequires:	glib-devel
 BuildRequires:	libstdc++-devel
